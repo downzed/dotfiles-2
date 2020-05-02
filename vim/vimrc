@@ -3,40 +3,10 @@
 " Plugins
 " =======
 
-call plug#begin('~/.vim/plugged')
-
-" A tree explorer plugin for vim
-Plug 'scrooloose/nerdtree'
-"" close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" EditorConfig plugin for Vim
-Plug 'editorconfig/editorconfig-vim'
-
-" True Sublime Text style multiple selections for Vim
-Plug 'terryma/vim-multiple-cursors'
-
-" A code-completion engine for Vim
-Plug 'Valloric/YouCompleteMe' {'do': 'python3 ./install.py --all'}
-set completeopt-=preview
-let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-
-" Vim plugin, insert or delete brackets, parens, quotes in pair
-Plug 'jiangmiao/auto-pairs'
-
-" The uncompromising Python code formatter
+call plug#begin()
+" Python code formatter
 Plug 'python/black'
-
-" UltiSnips - The ultimate snippet solution for Vim.
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger       = '<tab>'
-let g:UltiSnipsJumpForwardTrigger  = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
-" vim-snipmate default snippets
-Plug 'honza/vim-snippets'
-
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " General Settings

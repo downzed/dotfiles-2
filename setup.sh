@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 bold=$(tput bold)
 norm=$(tput sgr0)
@@ -43,16 +43,16 @@ function install_essential_packages() {
 
 function install_vim() {
     echo "${bold}==> Installing VIM${norm}"
-    cp -r ~/.vim ~/.vim-orig
+    if [[ -d ~/.vim ]]; then
+        cp -r ~/.vim ~/.vim-orig
+    fi
+
     cp -r ~/.dotfiles/vim ~/.vim
 
     echo "${bold}==> Installing vim-plug${norm}"
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     
-    echo "${bold}==> Installig vim plugins${norm}"
-    vim +PlugInstall +qa
-
     echo "🍻 ${bold}VIM has been installed!${norm}"
 }
 
@@ -82,13 +82,13 @@ for arg in "$@"; do
             list_programs
             ;;
         *)
-            if [[ "${PROGRAMS[@]}" =~ "${arg}" ]]; then
+            if  [[ "${PROGRAMS[@]}" =~ "${arg}" ]]; then
                 install_program="install_${arg}"
-                $exec_install_program
+                $install_program
             else
-                 echo "${warn}It's not possible to install: ${bold}${program}${norm}"
-                 list_programs
-            fi
+                echo "${warn}It's not possible to install: ${bold}${program}${norm}"
+                list_programs
+            fi 
             ;;
     esac
 done
