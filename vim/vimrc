@@ -1,0 +1,79 @@
+" VIM
+
+" Plugins
+" =======
+
+call plug#begin('~/.vim/plugged')
+
+" A tree explorer plugin for vim
+Plug 'scrooloose/nerdtree'
+"" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" EditorConfig plugin for Vim
+Plug 'editorconfig/editorconfig-vim'
+
+" True Sublime Text style multiple selections for Vim
+Plug 'terryma/vim-multiple-cursors'
+
+" A code-completion engine for Vim
+Plug 'Valloric/YouCompleteMe' {'do': 'python3 ./install.py --all'}
+set completeopt-=preview
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+
+" Vim plugin, insert or delete brackets, parens, quotes in pair
+Plug 'jiangmiao/auto-pairs'
+
+" The uncompromising Python code formatter
+Plug 'python/black'
+
+" UltiSnips - The ultimate snippet solution for Vim.
+Plug 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger       = '<tab>'
+let g:UltiSnipsJumpForwardTrigger  = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+" vim-snipmate default snippets
+Plug 'honza/vim-snippets'
+
+call plug#end()
+
+" General Settings
+" ================
+
+syntax on
+filetype indent plugin on
+set nocompatible    " disable  vi compatibility mode
+set history=1000    " increase history size
+set encoding=utf-8
+set mouse=a
+set hidden
+set number
+set noswapfile      " disable swapfiles
+set nobackup        " disable backup files
+set termguicolors
+
+"" indent settings
+set autoindent
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+
+" Mappings
+" ========
+
+" control tabs
+map <C-t> :tabnew<cr>
+map <C-w> :tabclose<cr>
+map <C-left> :tabp<cr>
+map <C-right> : tabn<cr>
+
+" open shell
+nmap <silent> <C-D> :shell<CR>
+
+" select all
+noremap <C-a> ggVG<CR>
+
+" copy to clipboard
+noremap <RightMouse> "+y
