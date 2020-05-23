@@ -28,7 +28,7 @@ function install_ohmyzsh() {
     echo "${bold}==> Installing Oh My Zsh...${norm}"
     git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.dotfiles/oh-my-zsh
     cp ~/.zshrc ~/.zshrc.orig
-    cp ~/.dotfiles/zshrc.zsh-template ~/.zshrc
+    ln -s ~/.dotfiles/zshrc.zsh-template ~/.zshrc
     chsh -s $(which zsh)
     echo "🍻 ${bold}Oh-my-zsh has been installed!${norm}"
 }

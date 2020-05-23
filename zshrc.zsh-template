@@ -5,19 +5,33 @@ export ZSH=$HOME/.dotfiles/oh-my-zsh
 ZSH_CUSTOM=$HOME/.dotfiles/custom-oh-my-zsh
 
 # theme
-ZSH_THEME="fishy2"
+ZSH_THEME="finox"
 
 # plugins
-plugins=(git)
+plugins=(git extract genpy)
 
 source $ZSH/oh-my-zsh.sh
 
 # alias
-alias zshconfig="vim ~/.zshrc"
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vim/vimrc"
+alias dots="cd ~/.dotfiles"
+
+alias rm="rm -r"
+alias cp="cp -r"
 
 # functions
 update() {
 	sudo apt update -y
 	sudo apt dist-upgrade -y
 	echo "Updated! 🍻"
+}
+
+trash() {
+    mkdir -p /tmp/wastebasket/
+    mv $* /tmp/wastebasket/
+}
+
+destroy() {
+    shred -vzu -n 10 $*
 }
