@@ -1,4 +1,4 @@
-# Name: Fishy2
+# Name: Finox
 # Source: https://github.com/blessxjalil/dotfiles
 
 _fishy_collapsed_wd() {
