@@ -6,8 +6,6 @@ warn=$(tput setaf 1)
 
 PACKAGES=(
     vim
-    vim-nox
-    vim-gnome
     htop
     zsh
     build-essential
@@ -40,22 +38,6 @@ function install_essential_packages() {
     sudo apt install -y ${PACKAGES[@]}
     echo "🍻 ${bold}Essential packages has been installed!${norm}"
 }
-
-function install_vim() {
-    echo "${bold}==> Installing VIM${norm}"
-    if [[ -d ~/.vim ]]; then
-        cp -r ~/.vim ~/.vim-orig
-    fi
-
-    cp -r ~/.dotfiles/vim ~/.vim
-
-    echo "${bold}==> Installing vim-plug${norm}"
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    
-    echo "🍻 ${bold}VIM has been installed!${norm}"
-}
-
 
 # Lista de programas disponibles para instalar.
 PROGRAMS=(
